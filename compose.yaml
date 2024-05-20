@@ -4,6 +4,7 @@ networks:
 
 services:
   comfy-ui:
+    # dockerfile: Dockerfile
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,7 +13,7 @@ services:
     networks:
           - 1panel-network
     volumes:
-      - /mnt/Contents/App/comfy_ui/ComfyUI/models:/app/models
+      - /mnt/Contents/App/ComfyUI/models:/app/models
     deploy:
       resources:
         reservations:
