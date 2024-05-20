@@ -1,0 +1,22 @@
+networks:
+    1panel-network:
+        external: true
+
+services:
+  comfy-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8188:8188"
+    networks:
+          - 1panel-network
+    volumes:
+      - /mnt/Contents/App/comfy_ui/ComfyUI/models:/app/models
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
